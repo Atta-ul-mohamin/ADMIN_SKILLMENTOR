@@ -4,22 +4,17 @@
         <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
                 class="fas fa-user-secret me-2"></i>Admin</div>
         <div class="list-group list-group-flush my-3">
-            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+            <a  class="list-group-item list-group-item-action bg-transparent second-text active" ><i
                     class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+            <a  class="list-group-item list-group-item-action bg-transparent second-text fw-bold" (click)="showHistory()"><i
                     class="fas fa-project-diagram me-2"></i>Orders history</a>
 
-                    <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-user-circle me-2"></i>Employees</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                            class="fas fa-shopping-cart me-2"></i>Customers</a>        
-                       <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                    class="fas fa-paperclip me-2"></i>Reports</a>
-           
-            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                    class="fas fa-comment-dots me-2"></i>Chat</a>
+                    <a  class="list-group-item list-group-item-action bg-transparent second-text fw-bold" (click)="showEmployees()">
+                        <i class="fas fa-user-circle me-2"></i>students</a>
+                        <a  class="list-group-item list-group-item-action bg-transparent second-text fw-bold"(click)="showTeacher()">
+                            <i class="fas fa-user-circle me-2"></i>Teachers</a>        
             
-            <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+            <a routerLink="/" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold" ><i
                     class="fas fa-power-off me-2"></i>Logout</a>
         </div>
     </div>
@@ -39,7 +34,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
   
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
@@ -53,7 +48,7 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </nav>
   
         <div class="container-fluid px-4">
@@ -61,18 +56,18 @@
                 <div class="col-md-3">
                     <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                         <div>
-                            <h3 class="fs-2">720</h3>
-                            <p class="fs-5">Pending payment</p>
+                            <h3 class="fs-2">{{totalMUser}}</h3>
+                            <p class="fs-5">total student</p>
                         </div>
-                        <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        <i class="fas fa-user-circle fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                     </div>
                 </div>
   
                 <div class="col-md-3">
                     <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                         <div>
-                            <h3 class="fs-2">4920</h3>
-                            <p class="fs-5">Earnings</p>
+                            <h3 class="fs-2">{{totalPrice}}</h3>
+                            <p class="fs-5">money of orders</p>
                         </div>
                         <i
                             class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -82,8 +77,8 @@
                 <div class="col-md-3">
                     <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                         <div>
-                            <h3 class="fs-2">3899</h3>
-                            <p class="fs-5">Today Trafic</p>
+                            <h3 class="fs-2">{{totalMUserT}}</h3>
+                            <p class="fs-5">Total Teacher</p>
                         </div>
                         <i class="fas fa-user-circle fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                     </div>
@@ -92,63 +87,89 @@
                 <div class="col-md-3">
                     <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                         <div>
-                            <h3 class="fs-2">%25</h3>
-                            <p class="fs-5">Increase</p>
+                            <h3 class="fs-2">{{totalOrders}}</h3>
+                            <p class="fs-5">total orders</p>
                         </div>
-                        <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        <i class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                     </div>
                 </div>
             </div>
   
-            <div class="row my-5">
-                <h3 class="fs-4 mb-3">Recent Orders</h3>
+           
+
+            <div class="row my-5" *ngIf="showEmployeeTable">
+                <h3 class="fs-4 mb-3">Students</h3>
                 <div class="col">
-                    <table class="table bg-white rounded shadow-sm  table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col" width="50">#</th>
-                                <th scope="col">Services</th>
-                                <th scope="col">Customer</th>
-                                <th scope="col">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>math problem solver</td>
-                                <td>Jonny</td>
-                                <td>$1200</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>graphic</td>
-                                <td>Kenny</td>
-                                <td>$750</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>web developer</td>
-                                <td>Jenny</td>
-                                <td>$600</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>physics</td>
-                                <td>Killy</td>
-                                <td>$300</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">5</th>
-                                <td>Books</td>
-                                <td>Filly</td>
-                                <td>$120</td>
-                            </tr>
-                          
-                            
-                        </tbody>
-                    </table>
+                  <table class="table bg-white rounded shadow-sm table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Password</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let employee of employees">
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.email}}</td>
+                        <td>{{employee.password}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-            </div>
+              </div>
+
+
+              <div class="row my-5" *ngIf="showTeacherTable">
+                <h3 class="fs-4 mb-3">Teachers</h3>
+                <div class="col">
+                  <table class="table bg-white rounded shadow-sm table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Password</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let t of teacher">
+                        <td>{{t.name}}</td>
+                        <td>{{t.email}}</td>
+                        <td>{{t.password}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+
+              <div class="row my-5" *ngIf="showHistoryTable">
+                <h3 class="fs-4 mb-3">History orders</h3>
+                <div class="col">
+                  <table class="table bg-white rounded shadow-sm table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">title</th>
+                        <th scope="col">rating</th>
+                        <th scope="col">price</th>
+                        <th scope="col">orderDays</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let t of history">
+                        <td>{{t.title}}</td>
+                        <td>{{t.rating}}</td>
+                        <td>{{t.price}}</td>
+                        <td>{{t.orderDays}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+
   
         </div>
     </div>

@@ -21,7 +21,6 @@ async signup(firstnameElement: HTMLInputElement, emailElement: HTMLInputElement,
   const email = emailElement.value;
   const password = passwordElement.value;
 
-  await this.service.signup(firstname, email, password);
   return true;
 }
 

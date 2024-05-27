@@ -1,4 +1,4 @@
-<section  (submit)="onLogin(email.value, password.value)">
+<section>
     <div class="container py-5">
       <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-8 col-lg-6">
@@ -13,8 +13,8 @@
   
               <form>
                 <div class="form-outline mb-4">
-                  <input type="email" id="email" class="form-control form-control-lg"  #email/>
-                  <label class="form-label" for="email">Email address</label>
+                  <input type="email" id="email" class="form-control form-control-lg"  #name/>
+                  <label class="form-label" for="email">User Name</label>
                 </div>
   
                 <div class="form-outline mb-4">
@@ -22,14 +22,10 @@
                   <label class="form-label" for="password">Password</label>
                 </div>
   
-                <button type="button" class="btn btn-dark btn-lg btn-block" (click)="onLogin(email.value, password.value)">Login</button>
+                <button type="button" class="btn btn-dark btn-lg btn-block" (click)="onLogin(name.value, password.value)">Login</button>
   
   
-                <a class="small text-muted" href="#" [routerLink]="['/forget-pin']">Forgot password?</a>
-                <p class="mb-3" style="color: #0d1785;">Don't have an account?
-                <a href="#"[routerLink]="['/signup']" style="color: #0d1785;">Register here</a></p>
-                <a href="#!" style="color: #2d37a3;">Terms of use.</a>
-                <a href="#!" style="color: #2533c7;">Privacy policy</a>
+               
               </form>
   
             </div>
